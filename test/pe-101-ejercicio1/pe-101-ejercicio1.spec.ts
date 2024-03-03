@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import { ArithmeticNumber } from '../../src/pe-101-ejercicio1/arithmeticnumber'
 import { ArithmeticableCollection } from '../../src/pe-101-ejercicio1/arithmeticablecolection'
 import { Rational } from '../../src/pe-101-ejercicio1/rational'
+import { Complex } from '../../src/pe-101-ejercicio1/complex'
 
 describe('ArithmeticNumber', () => {
     it('debería sumar dos números correctamente', () => {
@@ -118,7 +119,7 @@ describe('Rational', () => {
     const rational1 = new Rational(1, 2);
     const rational2 = new Rational(3, 4);
     const quotient = rational1.divide(rational2);
-    expect(quotient.toString()).to.equal('4/6');
+    expect(quotient.toString()).to.equal('2/3');
   });
 
   it('debería lanzar una excepción al dividir por cero', () => {
@@ -126,7 +127,38 @@ describe('Rational', () => {
     const rational2 = new Rational(0, 1);
     expect(() => rational1.divide(rational2)).to.throw('Cannot divide by zero');
   });
+  it('Debería operar con números negativos', () => {
+    const rational1 = new Rational(-1, 2);
+    const rational2 = new Rational(3, 4);
+    const sum = rational1.add(rational2);
+    const difference = rational1.subtract(rational2);
+    const product = rational1.multiply(rational2);
+    const quotient = rational1.divide(rational2);
+    expect(sum.toString()).to.equal('1/4');
+    expect(difference.toString()).to.equal('-5/4');
+    expect(product.toString()).to.equal('-3/8');
+    expect(quotient.toString()).to.equal('-2/3');
+  });
+  it('Debería lanzar una excepción al intentar crear un número racional con denominador cero', () => {
+    expect(() => new Rational(1, 0)).to.throw('Denominator cannot be zero');
+  });
+
+  it('Debería simplificar el número racional', () => {
+    const rational = new Rational(4, 8);
+    expect(rational.toString()).to.equal('1/2');
+  });
+
+  it('Debería manejar números negativos', () => {
+    const rational = new Rational(-4, 8);
+    expect(rational.toString()).to.equal('-1/2');
+  });
+
+  it('Debería manejar números decimales', () => {
+    const rational = new Rational(1, -3);
+    expect(rational.toString()).to.equal('-1/3');
+  });
 });
+
 
 
 

@@ -1,5 +1,8 @@
 import { Factura } from './factura';
 
+/**
+ * Interfaz GeneradorFactura
+ */
 export interface GeneradorFactura {
-    generarFactura(factura: Factura): string;
+  generarFactura(factura: Factura): string;
 }

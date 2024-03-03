@@ -1,4 +1,7 @@
-export interface Enser {
-    nombre: string;
+/**
+ * Interfaz que representa a un Enser
+ */
+export interface Enser {  
+  nombre: string;
 }
   

@@ -1,19 +1,18 @@
 import { TextFileReader } from './textfilereader';
 import { TextFileWriter } from './textfilewriter';
 
-// Cliente
+// creo un lector de archivos de texto y muestro el contenido del archivo
 const filePath = 'example.txt';
 
-// Uso del lector
 const fileReader = new TextFileReader(filePath);
 const currentContent = fileReader.readFile();
 console.log('Current content:', currentContent);
 
-// Uso del escritor
+// creo un escritor de archivos de texto y escribo nuevo contenido en el archivo
 const fileWriter = new TextFileWriter(filePath);
 const newData = 'This is new content to be written into the file.';
 fileWriter.writeFile(newData);
 
-// Lectura del contenido actualizado
+// muestro el contenido actualizado del archivo
 const updatedContent = fileReader.readFile();
 console.log('Updated content:', updatedContent);
